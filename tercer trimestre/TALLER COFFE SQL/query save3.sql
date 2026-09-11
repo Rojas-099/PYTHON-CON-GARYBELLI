@@ -1035,3 +1035,75 @@ SELECT ROUND(AVG(sueldo_base), 2) AS 'Sueldo Promedio Baristas'
 FROM empleado 
 WHERE tipo_empleado = 'BARISTA';
 ------------------------------------------- SIGUIENTE PUNTO ES EL 20 -----------------------------------------------------------------------
+
+
+
+
+SELECT MIN(precio_venta) AS 'Precio Mas Barato' FROM producto;
+
+SELECT * FROM producto WHERE precio_venta = 2500;
+
+
+
+
+SELECT MAX(precio_venta) AS 'Precio Mas Caro' FROM producto;
+
+SELECT * FROM producto WHERE precio_venta = 10000;
+
+
+
+
+SELECT MIN(fecha_ingreso) AS 'Fecha mas antigua' FROM empleado;
+
+
+
+
+SELECT MAX(total) AS 'Venta Maxima' FROM pedido;
+SELECT numero_pedido, fecha_hora, total FROM pedido WHERE total = 28000;
+
+
+
+
+
+
+
+
+SELECT codigo_sucursal, COUNT(*) AS total 
+FROM empleado 
+GROUP BY codigo_sucursal;
+
+
+
+
+
+SELECT id_categoria, COUNT(*) AS total 
+FROM producto 
+GROUP BY id_categoria;
+
+
+
+
+SELECT codigo_sucursal, SUM(total) AS total_vendido 
+FROM pedido 
+WHERE fecha_hora BETWEEN '2024-08-01 00:00:00' AND '2024-08-31 23:59:59'
+GROUP BY codigo_sucursal;
+
+
+
+
+SELECT cedula_mesero, COUNT(*) AS total_pedidos 
+FROM pedido 
+GROUP BY cedula_mesero 
+ORDER BY total_pedidos DESC;
+
+
+
+
+
+SELECT metodo_pago, SUM(total) AS total_vendido 
+FROM pedido 
+GROUP BY metodo_pago;
+
+
+
+
